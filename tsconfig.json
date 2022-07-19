@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "target": "es5",
+    "allowJs": true,
+    "strict": true,
+    "module": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
