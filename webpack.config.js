@@ -6,24 +6,23 @@ module.exports = {
   // 入口
   entry: "./src/index.tsx",
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: "eval-cheap-module-source-map",
   module: {
     rules: [
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   use: "babel-loader",
+      //   // options: { presets: ["@babel/env"] },
+      // },
       {
         // 识别哪些文件会被转换
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        // exclude: /(node_modules|bower_components)/,
-        // 转换时使用的loader
-        // loader 从右到左（或从下到上）执行，
-        // 链中的每个 loader 会将转换应用在已处理过的资源上。一组链式的 loader 将按照相反的顺序执行。链中的第一个 loader 将其结果（也就是应用过转换后的资源）传递给下一个 loader
-        use: "babel-loader",
-        // options: { presets: ["@babel/env"] },
-      },
-      {
         test: /\.css$/,
+        // 转换时使用的loader
+        // loader 从右到左（或从下到上）执行，前一个loader的转换结果传递给下一个loader
         use: ["style-loader", "css-loader"],
       },
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       {
         test: /\.tsx?$/,
         use: "ts-loader",
@@ -44,8 +43,6 @@ module.exports = {
     },
     // contentBase: path.join(__dirname, "public/"),
     port: 3000,
-    // publicPath: "http://localhost:3000/dist/",
-    // hotOnly: true,
     hot: true,
   },
   // 插件
@@ -59,21 +56,28 @@ module.exports = {
   ],
 };
 
-// const { merge } = require("webpack-merge");
-// const common = require("./webpack.common.js");
-
-// module.exports = merge(common, {
-//   mode: "production",
-//   devtool: "source-map",
-// });
-
-// const { merge } = require("webpack-merge");
-// const common = require("./webpack.common.js");
-
-// module.exports = merge(common, {
+// module.exports = [
+//   "eval",
+//   "eval-cheap-source-map",
+//   "eval-cheap-module-source-map",
+//   "eval-source-map",
+//   "cheap-source-map",
+//   "cheap-module-source-map",
+//   "inline-cheap-source-map",
+//   "inline-cheap-module-source-map",
+//   "source-map",
+//   "inline-source-map",
+//   "hidden-source-map",
+//   "nosources-source-map",
+// ].map((devtool) => ({
 //   mode: "development",
-//   devtool: "inline-source-map",
-//   devServer: {
-//     static: "./dist",
+//   entry: "./src/index.tsx",
+//   output: {
+//     path: path.join(__dirname, "dist"),
+//     filename: `./[name]-${devtool}.js`,
 //   },
-// });
+//   devtool,
+//   optimization: {
+//     runtimeChunk: true,
+//   },
+// }));
