@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true,
     "target": "es5",
@@ -9,6 +9,7 @@
     "module": "esnext",
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"]
     }
