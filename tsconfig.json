@@ -8,12 +8,15 @@
     "strict": true,
     "module": "esnext",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    // tsx 不用import react
+    "jsx": "react-jsx",
     "moduleResolution": "node",
+    // "noEmit": true, // 不输出文件，只做类型检查
+    // "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/Form/Field.jsx"],
   "exclude": ["node_modules"]
 }
