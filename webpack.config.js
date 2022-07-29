@@ -49,7 +49,10 @@ module.exports = (env, argv) => {
     // 输出
     output: {
       filename: "[name].bundle.js",
+      // 对应一个绝对路径
       path: path.resolve(__dirname, "dist"),
+      // webpack-dev-server 也会默认从 publicPath 为基准，使用它来决定在哪个目录下启用服务，来访问 webpack 输出的文件
+      publicPath: "/", // required for font loading on historyApiFallback
       clean: true,
     },
     devServer: {
@@ -61,6 +64,7 @@ module.exports = (env, argv) => {
       hot: true,
       // 打开默认浏览器
       open: mode === "development",
+      historyApiFallback: true,
     },
     // 插件
     plugins: [

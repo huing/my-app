@@ -1,6 +1,8 @@
-import React, { StrictMode } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App";
+import { BrowserRouter, useRoutes } from "react-router-dom";
+import routes from "@/routes/index";
+// import App from "./App";
 
 // const container = document.getElementById('root')
 // const root = createRoot(container)
@@ -8,8 +10,14 @@ import App from "./App";
 
 // ReactDOM.render(<App />, document.getElementById("root"));
 
+const App = () => {
+  return useRoutes(routes);
+};
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 );
