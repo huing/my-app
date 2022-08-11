@@ -17,4 +17,5 @@ module.exports = {
     ],
     // "@babel/typescript",
   ],
+  plugins: [["@babel/plugin-proposal-decorators", { version: "legacy" }]],
 };
