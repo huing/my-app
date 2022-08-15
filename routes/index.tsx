@@ -2,6 +2,8 @@ import Ocr from "@/src/ocr";
 import Form from "@/src/form";
 import Layout, { About, Contact } from "@/components/Layout";
 import Redux from "@/src/redux";
+import ReduxHook from "@/src/reduxHook";
+
 export default [
   {
     name: "文字识别",
@@ -12,6 +14,12 @@ export default [
     name: "redux",
     path: "/redux",
     element: <Redux />,
+  },
+  {
+    name: "reduxHook",
+    path: "/reduxHook",
+    // element: () => import("@/src/reduxHook"),
+    element: <ReduxHook />,
   },
   {
     name: "form实现",

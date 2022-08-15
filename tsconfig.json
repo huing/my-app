@@ -4,21 +4,32 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // js 文件会被 tsc 编译
     "allowJs": true,
     "strict": true,
     "module": "esnext",
+    // 允许对不包含默认导出的模块使用默认导入
     "allowSyntheticDefaultImports": true,
+    // 开启esModuleInterop会默认开启allowSyntheticDefaultImports
+    // 只有当 module:commonjs 时，esModuleInterop才会起作用
+    // "esModuleInterop": true,
     // 修饰器
     "experimentalDecorators": true,
     // tsx 不用import react
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    // "noEmit": true, // 不输出文件，只做类型检查
+    "noEmit": true, // 不输出文件，只做类型检查
+    // "skipLibCheck": true,
+    // "forceConsistentCasingInFileNames": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "resolveJsonModule": true,
+    "isolatedModules": true,
     // "baseUrl": "./",
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules"]
 }

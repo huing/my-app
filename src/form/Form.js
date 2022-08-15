@@ -1,17 +1,21 @@
-import React, { useImperativeHandle } from "react";
+import { useImperativeHandle, forwardRef } from "react";
 import Field from "./Field";
 import FieldContext from "./FieldContext";
 import useForm from "./useForm";
 
 export function BaseForm({ children, form, onFinish, onFinishFailed }, ref) {
   const [formInstance] = useForm(form);
+
+  // useImperativeHandle 应与 forwardRef 一起使用
+  //使用ref时， 自定义暴露给父组件的实例值
   useImperativeHandle(ref, () => formInstance);
-  formInstance.setCallbacks({ onFinish, onFinishFailed });
+  formInstance.getInternalHooks().setCallbacks({ onFinish, onFinishFailed });
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
+      onSubmit={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
         formInstance.submit();
       }}
     >
@@ -22,8 +26,7 @@ export function BaseForm({ children, form, onFinish, onFinishFailed }, ref) {
   );
 }
 
-// const Form = React.forwardRef(BaseForm);
-const Form = BaseForm;
+const Form = forwardRef(BaseForm);
 Form.Field = Field;
 Form.useForm = useForm;
 

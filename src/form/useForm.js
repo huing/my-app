@@ -9,7 +9,7 @@ class FormStore {
     this.callbacks = {};
   }
   setCallbacks = (newCallbacks) => {
-    this.callbacks = { ...this.callbacks, ...newCallbacks };
+    this.callbacks = newCallbacks;
   };
   registerFieldEntity = (entity) => {
     this.fieldEntities.push(entity);
@@ -32,10 +32,15 @@ class FormStore {
       ...this.store,
       ...params,
     };
-    // this.fieldEntities.forEach((entity) => {
-    //   entity.onStoreChange();
-    // });
+    this.fieldEntities.forEach((entity) => {
+      entity.onStoreChange();
+    });
     console.log(params, this.store);
+  };
+  getInternalHooks = () => {
+    return {
+      setCallbacks: this.setCallbacks,
+    };
   };
   getForm = () => {
     return {
@@ -43,6 +48,7 @@ class FormStore {
       getFieldsValues: this.getFieldsValues,
       setFieldsValue: this.setFieldsValue,
       registerFieldEntity: this.registerFieldEntity,
+      getInternalHooks: this.getInternalHooks,
     };
   };
 }
