@@ -3,8 +3,14 @@ import Form from "@/src/form";
 import Layout, { About, Contact } from "@/components/Layout";
 import Redux from "@/src/redux";
 import ReduxHook from "@/src/reduxHook";
+import Flex from "@/src/flex";
 
 export default [
+  {
+    name: "flex",
+    path: "/flex",
+    element: <Flex />,
+  },
   {
     name: "文字识别",
     path: "/ocr",

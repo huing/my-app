@@ -31,5 +31,6 @@
     }
   },
   // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  // 默认排除 node_modules，bower_components，jspm_packages和<outDir>目录
   "exclude": ["node_modules"]
 }

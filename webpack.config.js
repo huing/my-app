@@ -26,6 +26,25 @@ module.exports = (env, argv) => {
           // style-loader 把css插入到dom中
           use: ["style-loader", "css-loader"],
         },
+        {
+          test: /\.less$/,
+          use: [
+            {
+              loader: "style-loader", // 从 JS 中创建样式节点
+            },
+            {
+              loader: "css-loader", // 转化 CSS 为 CommonJS
+              // options: {
+              //   url: true, // 默认true
+              //   import: true, // 默认true
+              //   modules: true,
+              // },
+            },
+            {
+              loader: "less-loader", // 编译 Less 为 CSS
+            },
+          ],
+        },
         // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
         {
           test: /\.tsx?$/,
