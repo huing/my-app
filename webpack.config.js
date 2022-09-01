@@ -5,6 +5,7 @@ const webpack = require("webpack"); // 访问内置的插件
 module.exports = (env, argv) => {
   const { mode } = argv;
   return {
+    target: ["browserslist"],
     // 入口
     entry: "./src/index.tsx",
     mode,
@@ -19,27 +20,28 @@ module.exports = (env, argv) => {
         },
         {
           // 识别哪些文件会被转换
-          test: /\.css$/,
+          test: /\.css$/i,
           // 转换时使用的loader
           // loader 从右到左（或从下到上）执行，前一个loader的转换结果传递给下一个loader
           // css-loader 对@import url()进行处理 modules
           // style-loader 把css插入到dom中
-          use: ["style-loader", "css-loader"],
+          use: ["style-loader", "css-loader", "postcss-loader"],
         },
         {
-          test: /\.less$/,
+          test: /\.less$/i,
           use: [
             {
               loader: "style-loader", // 从 JS 中创建样式节点
             },
             {
               loader: "css-loader", // 转化 CSS 为 CommonJS
-              // options: {
-              //   url: true, // 默认true
-              //   import: true, // 默认true
-              //   modules: true,
-              // },
+              options: {
+                url: true, // 默认true
+                import: true, // 默认true
+                // modules: true, // 不设置会自动分析，.module.less走模块，.less 走全局样式
+              },
             },
+            "postcss-loader",
             {
               loader: "less-loader", // 编译 Less 为 CSS
             },
@@ -83,7 +85,7 @@ module.exports = (env, argv) => {
       port: 4000,
       hot: true,
       // 打开默认浏览器
-      open: mode === "development",
+      // open: mode === "development",
       historyApiFallback: true,
     },
     // 插件

@@ -1,0 +1,18 @@
+# 查询所选择的浏览器版本
+# npx browserslist
+
+# > 0.5%, last 2 versions, Firefox ESR, not dead
+defaults
+
+# 取反
+not IE 11
+
+# 所有还被 node 基金会维护的 node 版本
+# maintained node versions
+
+
+# "browserslist": [
+#    "defaults",
+#    "not IE 11",
+#    "maintained node versions"
+# ],

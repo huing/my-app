@@ -1,4 +1,11 @@
+@import "./flex.css";
+/* @import "./common.less"; */
+
 .flex {
   display: flex;
   flex-direction: row;
+}
+
+body {
+  user-select: none;
 }
