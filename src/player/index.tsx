@@ -1,6 +1,11 @@
-import React, { useState } from "react";
-import VideoJS from "./VideoJS";
-import XGPlayer from "./XGPlayer";
+import React, {
+  useImperativeHandle,
+  useRef,
+  forwardRef,
+  createRef,
+  useEffect,
+  useState,
+} from "react";
 
 const Player = () => {
   const [player, setPlayer] = useState(false);

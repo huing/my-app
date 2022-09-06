@@ -21,7 +21,9 @@ function add(...argus) {
 // const result = add(1)(2)(3)(4)(5);
 const result = add(1, 2, 3, 4)(5);
 console.log(result.toString());
+// 15
 console.log(result.value());
+// 15
 
 /*
  * 柯里化 map

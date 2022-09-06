@@ -1,7 +1,6 @@
 // import { useDispatch, useSelector } from "react-redux";
 
 import { useReducer } from "react";
-import Demo from "../Demo";
 import { countReducer } from "./store";
 
 const ReduxHook = () => {
@@ -13,7 +12,6 @@ const ReduxHook = () => {
 
   return (
     <div>
-      <Demo />
       <div>HoosksPage</div>
       <p>{count}</p>
       <button onClick={add}>add</button>

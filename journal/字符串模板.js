@@ -1,5 +1,6 @@
 function render(template, context) {
-  return template.replace(/\{|{(.*?)\}\}/g, (match, key) => context[key.trim()])
+  // (.*?) 匹配字符最少次数
+  return template.replace(/\{\{(.*?)\}\}/g, (match, key) => context[key.trim()])
 }
 
 const template = '{{name}}很厉害,才{{age}}岁'
@@ -11,9 +12,7 @@ function generateMessage(template, data) {
   return template.replace(/\${(.*?)\}/g, (match, key) => data[key.trim()])
 }
 
-const template1 =
-  '亲爱的${username}，中秋大促~，送你一张${coupon}优惠券，你感兴趣的${sku1} 和${sku2} 都能用！'
-
+const template1 = '亲爱的${username}，中秋大促~，送你一张${coupon}优惠券，你感兴趣的${sku1} 和${sku2} 都能用！'
 const data = {
   username: '桔子',
   coupon: '5元',
@@ -21,5 +20,4 @@ const data = {
   sku2: '蛋糕',
 }
 
-const message = generateMessage(template1, data)
-console.log(message)
+generateMessage(template1, data)
