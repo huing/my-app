@@ -4,14 +4,8 @@ import Layout, { About, Contact } from "@/components/Layout";
 import Redux from "@/src/redux";
 import ReduxHook from "@/src/reduxHook";
 import Flex from "@/src/flex";
-import Player from "@/src/player";
 
 export default [
-  {
-    name: "player",
-    path: "/player",
-    element: <Player />,
-  },
   {
     name: "flex",
     path: "/flex",
